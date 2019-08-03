@@ -1,0 +1,21 @@
+2019.0803:013306 MUX INI/START: Starting: MUX 2.12.0.7 #2 [ALPHA]
+2019.0803:013306 MUX INI/START: Build date: Sat 03 Aug 2019 01:32:55 AM UTC
+2019.0803:013306 OrbitMUX INI/LOAD : Couldn’t create interface to Query Server.
+2019.0803:013306 OrbitMUX INI/LOAD : Using game db files: (data/netmux.dir,data/netmux.pag).
+2019.0803:013306 OrbitMUX INI/LOAD : Loading: data/netmux.db
+LOADING: data/comsys.db
+LOADING: data/comsys.db (done)
+LOADING: data/mail.db
+LOADING: data/mail.db (done)
+2019.0803:013306 OrbitMUX INI/LOAD : Load complete.
+2019.0803:013306 OrbitMUX NET/SLAVE: DNS lookup slave started on fd 6
+2019.0803:013310 OrbitMUX NET/CONN : [7/127.0.0.1] Connection opened (remote port 45144)
+2019.0803:013322 OrbitMUX CON/BAD  : [7/127.0.0.1] Failed connect to ‘#1’
+2019.0803:013327 OrbitMUX CON/LOGIN: [7/127.0.0.1] Connected to Wizard(#1) in Auxiliary Room(#11)
+2019.0803:013330 OrbitMUX WIZ/SHTDN: Shutdown by Wizard(#1)
+2019.0803:013330 OrbitMUX WIZ/SHTDN: Shutdown status: 
+2019.0803:013330 OrbitMUX NET/DISC : [7/127.0.0.1] Logout by Wizard(#1) <Reason: Game Shutdown>
+2019.0803:013330 OrbitMUX DMP/DUMP : Dumping: data/netmux.db.new.#1#
+rename data/netmux.db.new to data/netmux.db.new.prev fails with errno of No such file or directory(2)
+2019.0803:013330 OrbitMUX DMP/DONE : Dump complete: data/netmux.db.new.#1#
+2019.0803:013330 OrbitMUX INI/LOAD : Revoked netmux modules.

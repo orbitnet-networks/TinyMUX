@@ -1,0 +1,21 @@
++V4
+*** Begin CHANNELS ***
+2
+12 1
+pub Public
+13 1
+pub Public
+*** Begin COMSYS ***
+2
+Guest
+[Guest]
+127 0 0 0 1 0 0 -1
+0
+Public
+[Public]
+127 0 0 0 1 0 2 -1
+2
+12 1 1
+t:
+13 1 1
+t:

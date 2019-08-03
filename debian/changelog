@@ -1,0 +1,113 @@
+tinymux (2.10.1.14-1) unstable; urgency=medium
+
+  * New upstream release
+    + fixes integer/pointer comparison (Closes: #853683)
+  * Update Standards-Version in debian/control from 3.9.8 to 4.0.1 (no
+    change needed).
+  * cppflags.diff was accepted upstream and therefore dropped from the
+    package.
+  * Added PCRE license to debian/copyright.
+  * Dropped unnecessary build dependencies (Closes: #877604)
+
+ -- Stephen Dennis <brazilofmux@gmail.com>  Tue, 03 Oct 2017 07:55:00 -0600
+
+tinymux (2.10.1.13-1) unstable; urgency=medium
+
+  * New upstream release
+  * New maintainer. (Closes: #830140)
+  * As suggested by lintian, update Standards-Version in debian/control from
+    3.9.6 to 3.9.8.
+  * Removed first paragraph from tinymux-install.1 man page because the
+    tinymux-install program is not part of the upstream package.
+  * Freshened the first paragraph of tinymux.6 man page to give the reader a
+    better sense of what can be built.
+  * Removed the reference to Amberyl's MUSH Manual because the link points to
+    what is now a completely different website.
+  * As suggested by lintian, added debian/watch file and signing-key.asc.
+  * As required, convert debian/copyright to deb5 format.
+  * Migrate debian/rules to shortened version, add debian/install and
+    debian/clean, and remove debian/dirs. This simplifies things
+    considerably.
+  * Enabled hardening in debian/rules to address build warnings about
+    hardening control via CPPFLAGS and LDFLAGS.
+
+ -- Stephen Dennis <brazilofmux@gmail.com>  Thu, 05 Jan 2017 04:37:00 -0700
+
+tinymux (2.6.5.34-1.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * New upstream release.
+  * Fix "FTBFS with GCC 6: narrowing conversion" by using unsigned types.
+    They are always used as a bit field anyway. (Closes: #811780)
+  * Fix "use autotools-dev to update config.{sub,guess} for new arches"
+    by adopting latest versions of config.{sub,guess}. (Closes: #736863)
+  * Fix "[Mayhem] Bug report on tinymux: netmux crashes with exit status
+    139" by fixing the size of the command-line argument table.
+    (Closes: #716615)
+
+ -- Stephen Dennis <brazilofmux@gmail.com>  Thu, 10 Mar 2016 16:57:00 -0700
+
+tinymux (2.6.5.28-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Ervin Hearn III <noltar@korongil.net>  Sun, 29 Jun 2008 20:13:26 -0600
+
+tinymux (2.6.5.27-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Ervin Hearn III <noltar@korongil.net>  Fri, 11 Apr 2008 23:18:25 -0600
+
+tinymux (2.4.3.31-1.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Fix buffer overflow CVE-2007-1655. Closes: #417539
+
+ -- Andreas Barth <aba@not.so.argh.org>  Sat, 23 Jun 2007 13:49:59 +0000
+
+tinymux (2.4.3.31-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Ervin Hearn III <noltar@korongil.net>  Sat,  7 Oct 2006 11:33:07 -0400
+
+tinymux (2.4.2.27-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Ervin Hearn III <noltar@korongil.net>  Mon,  6 Feb 2006 02:55:44 -0500
+
+tinymux (2.3.5.25-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Ervin Hearn III <noltar@korongil.net>  Sat, 17 Dec 2005 13:20:58 -0500
+
+tinymux (2.3.5.24-2) unstable; urgency=low
+
+  * Added missing class declaration for CLinearTimeDelta (patch by
+    Andreas Jochens) and removed #ifdef check for IEEE floating point
+    check (patch from upstream). Tinymux now builds from source with
+    newer gcc/g++ versions. Closes: #323106
+
+ -- Ervin Hearn III <noltar@korongil.net>  Sat,  1 Oct 2005 19:46:04 -0400
+
+tinymux (2.3.5.24-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Ervin Hearn III <noltar@korongil.net>  Wed, 17 Aug 2005 02:54:15 -0400
+
+tinymux (2.3.4.23-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Ervin Hearn III <noltar@korongil.net>  Tue, 18 Jan 2005 14:26:24 -0500
+
+tinymux (2.3.3.22-1) unstable; urgency=low
+
+  * Initial Release. (closes: #281283)
+
+ -- Ervin Hearn III <noltar@korongil.net>  Mon, 25 Oct 2004 19:14:38 -0400
+

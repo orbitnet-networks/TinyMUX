@@ -1,0 +1,24 @@
+#!/usr/bin/make -f
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+%:
+	dh $@ --sourcedirectory=src
+
+override_dh_auto_configure:
+	dh_auto_configure -- --enable-stubslave
+
+override_dh_auto_build:
+	dh_auto_build
+	dh_auto_build --sourcedirectory=src/modules
+
+override_dh_fixperms:
+	dh_fixperms
+	chmod a-x $(CURDIR)/debian/tinymux/usr/share/tinymux/game/netmux.conf
+
+override_dh_auto_clean:
+	dh_auto_clean --sourcedirectory=src/modules
+	dh_auto_clean
+
+override_dh_shlibdeps:
+	dh_shlibdeps -l$(CURDIR)/debian/tinymux/usr/lib/tinymux/game/bin

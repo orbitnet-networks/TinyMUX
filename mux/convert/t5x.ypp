@@ -1,0 +1,193 @@
+%{
+#include "omega.h"
+#include "t5xgame.h"
+int t5xlex();
+void t5xerror(const char *s);
+%}
+
+%name-prefix "t5x"
+%union {
+    char                   *p;
+    int                     i;
+    T5X_ATTRINFO           *pai;
+    vector<T5X_ATTRINFO *> *pvai;
+    T5X_LOCKEXP            *ple;
+}
+
+%token EOD
+%token <p> STRING
+%token <i> INTEGER OBJECT_V12 OBJECT_V34 XHDR SIZEHINT NEXTATTR RECORDPLAYERS
+%token <i> ATTRNUM ATTRREF
+%token <ple> ATTRLIT EVALLIT DBREF
+%type <pai> attr
+%type <pvai> attrlist
+%type <ple> lockterm lockfactor lockexpr locknested_r locknested_ra
+%start start
+
+%%
+start
+:
+    XHDR        { g_t5xgame.SetFlags($1); }
+    sections
+    EOD
+;
+
+sections
+:
+    section
+|
+    sections section
+;
+
+section
+:
+|
+    SIZEHINT       { g_t5xgame.SetSizeHint($1); }
+|
+    NEXTATTR       { g_t5xgame.SetNextAttr($1); }
+|
+    RECORDPLAYERS  { g_t5xgame.SetRecordPlayers($1); }
+|
+    ATTRNUM STRING { g_t5xgame.AddNumAndName($1, $2); }
+|
+    objectlist
+;
+
+objectlist
+:
+    object
+|
+    objectlist object
+;
+
+object
+:
+    OBJECT_V12 STRING INTEGER INTEGER
+    INTEGER INTEGER INTEGER INTEGER
+    lockexpr
+    INTEGER INTEGER INTEGER INTEGER
+    INTEGER INTEGER INTEGER INTEGER
+    attrlist '<' {
+                     T5X_OBJECTINFO *oi = new T5X_OBJECTINFO;
+                     oi->SetRef($1);
+                     oi->SetName($2);
+                     oi->SetLocation($3);
+                     oi->SetZone($4);
+                     oi->SetContents($5);
+                     oi->SetExits($6);
+                     oi->SetLink($7);
+                     oi->SetNext($8);
+                     oi->SetDefaultLock($9);
+                     oi->SetOwner($10);
+                     oi->SetParent($11);
+                     oi->SetPennies($12);
+                     oi->SetFlags1($13);
+                     oi->SetFlags2($14);
+                     oi->SetFlags3($15);
+                     oi->SetPowers1($16);
+                     oi->SetPowers2($17);
+                     if (NULL != $18)
+                     {
+                         oi->SetAttrs($18->size(), $18);
+                     }
+                     g_t5xgame.AddObject(oi);
+                 }
+|
+    OBJECT_V34 STRING INTEGER INTEGER
+    INTEGER INTEGER INTEGER INTEGER
+    INTEGER INTEGER INTEGER INTEGER
+    INTEGER INTEGER INTEGER INTEGER
+    attrlist '<' {
+                     T5X_OBJECTINFO *oi = new T5X_OBJECTINFO;
+                     oi->SetRef($1);
+                     oi->SetName($2);
+                     oi->SetLocation($3);
+                     oi->SetZone($4);
+                     oi->SetContents($5);
+                     oi->SetExits($6);
+                     oi->SetLink($7);
+                     oi->SetNext($8);
+                     oi->SetOwner($9);
+                     oi->SetParent($10);
+                     oi->SetPennies($11);
+                     oi->SetFlags1($12);
+                     oi->SetFlags2($13);
+                     oi->SetFlags3($14);
+                     oi->SetPowers1($15);
+                     oi->SetPowers2($16);
+                     if (NULL != $17)
+                     {
+                         oi->SetAttrs($17->size(), $17);
+                     }
+                     g_t5xgame.AddObject(oi);
+                 }
+;
+
+lockexpr:
+    lockexpr '|' lockterm            { $$ = new T5X_LOCKEXP; $$->SetOr($1,$3);     }
+|
+    lockterm                         { $$ = $1; }
+|
+                                     { $$ = NULL; }
+;
+
+lockterm:
+    lockfactor '&' lockterm          { $$ = new T5X_LOCKEXP; $$->SetAnd($1,$3);    }
+|
+    lockfactor                       { $$ = $1; }
+;
+
+lockfactor:
+    '!' lockfactor                   { $$ = new T5X_LOCKEXP; $$->SetNot($2);       }
+|
+    '@' locknested_r                 { $$ = new T5X_LOCKEXP; $$->SetIndir($2);     }
+|
+    '=' locknested_ra                { $$ = new T5X_LOCKEXP; $$->SetIs($2);        }
+|
+    '+' locknested_ra                { $$ = new T5X_LOCKEXP; $$->SetCarry($2);     }
+|
+    '$' locknested_r                 { $$ = new T5X_LOCKEXP; $$->SetOwner($2);     }
+|
+    '(' lockexpr ')'                 { $$ = $2; }
+|
+    ATTRLIT                          { $$ = $1; }
+|
+    EVALLIT                          { $$ = $1; }
+|
+    DBREF                            { $$ = $1; }
+;
+
+locknested_r:
+    DBREF                            { $$ = $1; }
+|
+    '(' locknested_r  ')'            { $$ = $2; }
+;
+
+locknested_ra:
+    DBREF                            { $$ = $1; }
+|
+    ATTRLIT                          { $$ = $1; }
+|
+    '(' locknested_ra  ')'           { $$ = $2; }
+;
+
+attrlist
+:
+    attrlist attr       { $$ = $1; if (NULL == $$) { $$ = new vector<T5X_ATTRINFO *>; } $$->push_back($2); }
+|
+                        { $$ = NULL; }
+;
+
+
+attr
+:
+    ATTRREF STRING  { $$ = new T5X_ATTRINFO; $$->SetNumAndValue($1, $2); }
+;
+
+%%
+
+void t5xerror(const char *s)
+{
+    extern int t5xlineno;
+    fprintf(stderr, "%s near line %d.\n", s, t5xlineno);
+}

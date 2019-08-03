@@ -1,0 +1,54 @@
+2019.0802:134735 MUX INI/START: Starting: MUX 2.12.0.7 #1 [ALPHA]
+2019.0802:134735 MUX INI/START: Build date: Fri 02 Aug 2019 12:38:02 PM UTC
+2019.0802:134735 OrbitMUX INI/LOAD : Couldn’t create interface to Query Server.
+2019.0802:134735 OrbitMUX INI/LOAD : Using game db files: (data/netmux.dir,data/netmux.pag).
+2019.0802:134735 OrbitMUX INI/LOAD : Loading: data/netmux.db
+LOADING: data/comsys.db
+LOADING: data/comsys.db (done)
+LOADING: data/mail.db
+LOADING: data/mail.db (done)
+2019.0802:134735 OrbitMUX INI/LOAD : Load complete.
+2019.0802:134735 OrbitMUX NET/SLAVE: DNS lookup slave started on fd 6
+2019.0802:134737 OrbitMUX NET/CONN : [7/127.0.0.1] Connection opened (remote port 51500)
+2019.0802:135135 OrbitMUX NET/DISC : [7/127.0.0.1] Connection closed, never connected. <Reason: Inactivity Timeout>
+2019.0802:135237 OrbitMUX NET/CONN : [7/96.89.39.201] Connection opened (remote port 16338)
+2019.0802:135316 OrbitMUX CON/CREA : [7/96.89.39.201] Created Ithrocore(#13)
+2019.0802:141735 OrbitMUX DMP/CHKPT: SYNCing and Checkpointing: data/netmux.db.new.#1#
+rename data/netmux.db.new to data/netmux.db.new.prev fails with errno of No such file or directory(2)
+2019.0802:142901 OrbitMUX NET/CONN : [8/127.0.0.1] Connection opened (remote port 60108)
+2019.0802:142909 OrbitMUX CON/LOGIN: [8/127.0.0.1] Connected to Wizard(#1) in Auxiliary Room(#11)
+2019.0802:143105 OrbitMUX NET/DISC : [8/127.0.0.1] Logout by Wizard(#1) <Reason: Quit>
+2019.0802:143107 OrbitMUX NET/CONN : [8/127.0.0.1] Connection opened (remote port 60112)
+2019.0802:143111 OrbitMUX CON/LOGIN: [8/127.0.0.1] Connected to amuskindu(#12) in Limbo(#0)
+2019.0802:143128 OrbitMUX NET/DISC : [8/127.0.0.1] Logout by amuskindu(#12) <Reason: Quit>
+2019.0802:143132 OrbitMUX NET/CONN : [8/127.0.0.1] Connection opened (remote port 60114)
+2019.0802:143139 OrbitMUX CON/LOGIN: [8/127.0.0.1] Connected to amuskindu(#12) in Limbo(#0)
+2019.0802:143434 OrbitMUX WIZ/SHOUT: amuskindu(#12) shouts: wtffff
+2019.0802:143544 OrbitMUX NET/DISC : [8/127.0.0.1] Logout by amuskindu(#12) <Reason: Quit>
+2019.0802:143546 OrbitMUX NET/CONN : [8/127.0.0.1] Connection opened (remote port 60126)
+2019.0802:143553 OrbitMUX CON/LOGIN: [8/127.0.0.1] Connected to Wizard(#1) in Auxiliary Room(#11)
+2019.0802:143609 OrbitMUX WIZ/SHOUT: Wizard(#1) shouts: Ithrocore is now a WIZARD!!!!
+2019.0802:143612 OrbitMUX NET/DISC : [8/127.0.0.1] Logout by Wizard(#1) <Reason: Quit>
+2019.0802:143613 OrbitMUX NET/CONN : [8/127.0.0.1] Connection opened (remote port 60128)
+2019.0802:143624 OrbitMUX CON/LOGIN: [8/127.0.0.1] Connected to amuskindu(#12) in Amus' Abode(#14)
+2019.0802:144735 OrbitMUX DMP/CHKPT: SYNCing and Checkpointing: data/netmux.db.new.#2#
+2019.0802:151735 OrbitMUX DMP/CHKPT: SYNCing and Checkpointing: data/netmux.db.new.#3#
+2019.0802:154735 OrbitMUX DMP/CHKPT: SYNCing and Checkpointing: data/netmux.db.new.#4#
+2019.0802:161735 OrbitMUX DMP/CHKPT: SYNCing and Checkpointing: data/netmux.db.new.#5#
+2019.0802:164735 OrbitMUX DMP/CHKPT: SYNCing and Checkpointing: data/netmux.db.new.#6#
+2019.0802:171735 OrbitMUX DMP/CHKPT: SYNCing and Checkpointing: data/netmux.db.new.#7#
+2019.0802:172024 OrbitMUX WIZ/SHOUT: amuskindu(#12) shouts: have you built it yet?
+2019.0802:173229 OrbitMUX WIZ/SHOUT: Ithrocore(#13) shouts: still thinking about ideas and trying to remember how to set things up...any specific theme or goal for this? :)
+2019.0802:174011 OrbitMUX WIZ/SHOUT: amuskindu(#12) shouts: space themed...star wars star trek or something lol
+2019.0802:174025 OrbitMUX NET/DISC : [8/127.0.0.1] Logout by amuskindu(#12) <Reason: Quit>
+2019.0802:174057 OrbitMUX NET/CONN : [8/127.0.0.1] Connection opened (remote port 42732)
+2019.0802:174105 OrbitMUX CON/BAD  : [8/127.0.0.1] Failed connect to ‘#1’
+2019.0802:174114 OrbitMUX CON/LOGIN: [8/127.0.0.1] Connected to Wizard(#1) in Auxiliary Room(#11)
+2019.0802:174122 OrbitMUX WIZ/SHOUT: Wizard(#1) shouts: shutting down to move the game folder
+2019.0802:174125 OrbitMUX WIZ/SHTDN: Shutdown by Wizard(#1)
+2019.0802:174125 OrbitMUX WIZ/SHTDN: Shutdown status: 
+2019.0802:174125 OrbitMUX NET/DISC : [8/127.0.0.1] Logout by Wizard(#1) <Reason: Game Shutdown>
+2019.0802:174125 OrbitMUX NET/DISC : [7/96.89.39.201] Logout by Ithrocore(#13) <Reason: Game Shutdown>
+2019.0802:174125 OrbitMUX DMP/DUMP : Dumping: data/netmux.db.new.#8#
+2019.0802:174125 OrbitMUX DMP/DONE : Dump complete: data/netmux.db.new.#8#
+2019.0802:174125 OrbitMUX INI/LOAD : Revoked netmux modules.

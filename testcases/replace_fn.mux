@@ -1,0 +1,121 @@
+#
+# replace_fn.mux - Test Cases for replace().
+#
+# Strategy: Exercise color and UTF-8 in combination with replace() behaviors.
+#
+@create test_replace_fn
+-
+@set test_replace_fn=INHERIT QUIET
+-
+#
+# Beginning of Test Cases
+#
+&tr.tc000 test_replace_fn=
+  @log smoke=Beginning replace() test cases.
+-
+#
+# Test Case #1 - Help file examples.
+#
+&tr.tc001 test_replace_fn=
+  @if strmatch(
+        setr(0,sha1(
+            [replace(This is a test, 4, quiz)]
+            [insert(Yet@Another@Mundane@List, 3, Funky, @)]
+          )
+        ),
+        928F739D325B8C8882EE7C4E32E6D5764AA08626
+      )=
+  {
+    @log smoke=TC001: Help file examples. Succeeded.
+  },
+  {
+    @log smoke=TC001: Help file examples. Failed (%q0).
+  }
+-
+#
+# Test Case #2 - Empty list. ASCII. Positive positions.
+#
+&tr.tc002 test_replace_fn=
+  @if strmatch(
+        setr(0,sha1(
+            [iter(0 1 2,## [replace(,##,Pear,|)])]
+          )
+        ),
+        6E58F1F3A34A9082AD078C3706E3067C0B22FE6E
+      )=
+  {
+    @log smoke=TC002: Empty list, ASCII, positive positions. Succeeded.
+  },
+  {
+    @log smoke=TC002: Empty list, ASCII, positive positions. Failed (%q0).
+  }
+-
+#
+# Test Case #3 - Non-empty lists. ASCII. Positive positions.
+#
+&tr.tc003 test_replace_fn=
+  @if strmatch(
+        setr(0,sha1(
+            [iter(0 1 2 3,## [replace(|,##,Pear,|)])]
+            [iter(0 1 2 3 4,## [replace(||,##,Pear,|)])]
+            [iter(0 1 2 3 4 5,## [replace(|||,##,Pear,|)])]
+          )
+        ),
+        40A8E0B4CA8FF2E2C9956AE9C09F9C68C8A16673
+      )=
+  {
+    @log smoke=TC003: Non-empty lists, ASCII, positive positions. Succeeded.
+  },
+  {
+    @log smoke=TC003: Non-empty lists, ASCII, positive positions. Failed (%q0).
+  }
+-
+#
+# Test Case #4 - Empty list. ASCII. Negative positions.
+#
+&tr.tc004 test_replace_fn=
+  @if strmatch(
+        setr(0,sha1(
+            [iter(-2 -1,## [replace(,##,Pear,|)])]
+          )
+        ),
+        5F364FF7EEEC93E30C5709B5184501A17046BDEA
+      )=
+  {
+    @log smoke=TC004: Empty list, ASCII, negative positions. Succeeded.
+  },
+  {
+    @log smoke=TC004: Empty list, ASCII, negative positions. Failed (%q0).
+  }
+-
+#
+# Test Case #5 - Non-empty lists. ASCII. Negative positions.
+#
+&tr.tc005 test_replace_fn=
+  @if strmatch(
+        setr(0,sha1(
+            [iter(-3 -2 -1,## [replace(|,##,Pear,|)])]
+            [iter(-4 -3 -2 -1,## [replace(||,##,Pear,|)])]
+            [iter(-5 -4 -3 -2 -1,## [replace(|||,##,Pear,|)])]
+          )
+        ),
+        29B941B8D4EE1193E602E3DDB0ED55DA5F86EFC9
+      )=
+  {
+    @log smoke=TC005: Non-empty lists, ASCII, negative positions. Succeeded.;
+    @trig me/tr.done
+  },
+  {
+    @log smoke=TC005: Non-empty lists, ASCII, negative positions. Failed (%q0).;
+    @trig me/tr.done
+  }
+-
+&tr.done test_replace_fn=
+  @log smoke=End replace() test cases.;
+  @notify smoke
+-
+drop test_replace_fn
+-
+#
+# End of Test Cases
+#

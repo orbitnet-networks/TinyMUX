@@ -1,0 +1,587 @@
+\documentclass[10pt,letterpaper]{book}
+
+\usepackage{ifpdf}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\ifpdf
+    \usepackage[pdftex,dvipsnames]{color}
+    \pdfcompresslevel9
+    \usepackage{pxfonts}
+    \usepackage{makeidx}
+    \makeindex
+    \usepackage[  pdftex,
+                  pdfauthor={Stephen Dennis},
+                  pdftitle={TinyMUX Manual},
+                  pdfkeywords={MUX;TinyMUX;MUSH;MUD;Softcode},
+                  bookmarksnumbered,
+                  colorlinks,
+                  english
+               ]{hyperref}
+\else
+    \usepackage[dvips,usenames]{color}
+    \usepackage[english]{hyperref}
+\fi
+\hypersetup{colorlinks=true}
+\usepackage{fancyhdr}
+\usepackage{times}
+\usepackage{courier}
+\usepackage{helvet}
+
+\setlength{\oddsidemargin}{0.5in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textwidth}{6in}
+\title{TinyMUX Manual}
+\author{Stephen Dennis (AKA Brazil)}
+\date{2009-FEB-16}
+
+\begin{document}
+\frontmatter
+\maketitle
+\tableofcontents
+
+\mainmatter
+\chapter{Introduction}
+A TinyMUX server allows a (possibly anonymous) crowd of people from all over
+the world to interact with each other within a persistent, virtual, text-based
+environment.
+Within this environment, players are able change the grid by adding rooms and
+exits, add code in the form of commands and functions, and communicate with
+each other.
+It is a platform for a wide range of game types including combat, simulation,
+loot-and-solve, heavily-coded roleplaying, lightly-coded roleplaying, or pure
+social elements.
+Most MUSH-style games contain an element of roleplaying, but this is not a
+requirement.
+
+TinyMUX is a member of the MUSH family of servers which are all ultimately
+derived from the original TinyMUD.
+The capabilities and functions of each in their several versions vary, but
+what is learned using one can be carried to another with little effort.
+
+Documentation that is available is both limited and out of date. In order to
+get a good idea of what you're dealing with, you may need to splice together
+information from several sources. It is easy to get stuck on a small point
+and waste a lot of time.  Also, these game servers are large enough and
+complicated enough that experimentation without the advantage of some
+experience or history can be nearly impossible.
+
+Always be prepared and ready to find your own way.
+
+\section{Glossary}
+
+Commonly-used terms:
+
+\begin{description}
+\item[Character]
+The avatar interacts within the virtual world under the
+control of the Player.
+This avatar may also be called the Player Character to indicate that the
+player controls the character as opposed to NPCs (Non-Player Characters) or
+mobs which are game-control characters and groups of characters, respectively.
+
+\item[Database]
+Every game has a database which holds a persistent representation of
+everything as well as their interelationships.
+After connecting, players are able to communicate with each other and affect
+the game's database.
+Some of the interelationships are more complex than others.
+
+\item[Dbref]
+A database can be viewed as a set of objects.
+Each object is assigned a unique number starting with zero and prefixed with
+a pound sign (\#0, \#1, \ldots).
+The pound sign (\#) before the number indicates that together they are a dbref
+and not something else.
+During its lifetime, an object's dbref and type does not change\footnote{See @toad
+for an exception to the type rule.}.
+Once an object is destroyed, its dbref can be re-assigned to a new,
+different object.
+
+\item[Hardcode]
+The term \emph{hardcode} usually means the approximately 120,000 lines of C/C++
+source code that make up the game server itself.
+All of the MUSH-type text-based game servers are written in C except
+TinyMUX 2 which is a combination of C and C++.
+However, the term can also be used more generically to refer to anything
+written in C/C++ or even to anything written in a general purpose programming
+language.
+
+\item[Player]
+This can refer to two things: 1) Someone who reads manuals and
+logs into a MUSH may be referred to as a player, and 2) An object with a type of
+PLAYER is a person's avatar within the game.
+The type is represented by the flag PLAYER (P).
+See Character.
+
+\item[Puppet]
+Objects with the PUPPET flag are often used to represent pets and NPCs
+(Non-Player Characters).
+When set on an object, the object will grow eyes and ears and relay everything
+it sees and hears to its owner. The owning Player controls what the Puppet
+says and does.
+
+\item[Softcode]
+\emph{Softcode} is the platform language that TinyMUX provides to users.
+It is also called \emph{MUSHcode}.
+For the purpose of this document, we'll call this platform language
+\emph{softcode} with the understanding that we expect it to run on a
+particular set of closely-related servers and on TinyMUX 2 in
+particular.
+
+\end{description}
+
+Commonly-used abbreviations:
+
+\begin{description}
+\item[AFK] Away From Keyboard.
+
+\item[IC] In Character.
+
+\item[NPC] Non-Player Character.
+
+\item[OOC] Out Of Character.
+
+\end{description}
+\section{Frequently Asked Questions (FAQ)}
+\subsection{I'm using Windows. Why does the log say it can't find its files?}
+You are probably running the netmux.exe file directly from the GUI by double
+clicking on the icon. The server needs the current directory to be the game
+sub-directory. All the file names are relative to that point, but when you
+double-click on the netmux.exe program directly, the current directory might
+be the game$\backslash$bin or tinymux$\backslash$release directory, or it
+might be somewhere else.  The current directory is too undefined for the game
+to be run this way.
+
+You should open a Command Prompt window (that is, an MS-DOS box), change to
+the drive and `mux2.6$\backslash$game' sub-directory where you extracted the
+distribution, make sure the netmux.exe and dbconvert.exe
+programs are in the `bin' sub-directory, and then run the startmux.wsf
+script from the `mux2.6$\backslash$game' sub-directory.
+
+\chapter{First Steps}
+\section{Client Features}
+There isn't enough room here to cover clients in any useful detail, but we can
+say that you should find and use one.
+Here are some common features to expect:
+\begin{description}
+\item[Multiple Sessions]
+The ability to connect to more than one game and draw attention when there is activity on one of the sessions.
+
+\item[Unicode]
+The ability to produce and consume Unicode text in addition to US-ASCII.
+
+\item[SSL]
+The ability to establish and use encrypted sessions to a game.
+
+\item[Triggers, Gags, and Colorization]
+The ability to parse, match, and modify output from a game.
+
+\item[256 colors]
+Support for more than 16 colors.
+
+\item[Scripting]
+Support for an external scripting language (usually driven from triggers).
+
+\end{description}
+
+\section{Connecting to a Game}
+To open a session with a game, you need its host name (e.g., mygame.com) and
+the port number (e.g., 4011) it is listening on. These two things together are
+called a game's \emph{addy}. Many games allow users to create accounts for
+themselves at the welcome screen, but you may have been given a username and
+password through some other means. Most clients have a dialog for entering
+these four items: 1) hostname, 2) port, 3) username, and 4) password. If you
+don't have a username or password, leave them blank, and you can fill them in
+later after you create your character.
+
+Your client may also ask you the method used connect. TinyMUX uses the following commands at the welcome screen:
+
+\footnotesize{\texttt{
+\begin{verse}
+create $<$username$>$ $<$password$>$\\
+connect $<$username$>$ $<$password$>$
+\end{verse}
+}}
+
+The password can be a phrase of any length and it can contain spaces,
+but be careful to remember it.
+If the username contains a space, surround the name with double quotes
+(e.g., "Mr. Smith").
+Instead of a username, you can also use your \emph{player object}'s dbref
+(e.g., \#12345).
+
+Once connected, your session is associated with a \emph{player object} in the
+game's database.
+It will contain attributes, flags, and powers which you can sometimes change,
+and it will have a location (i.e., a room or thing object which in turn will
+have their own attributes, flags, and powers).
+Rooms are connected to each other with exits, things can be carried by
+players, players and things can be located in rooms.
+How these locations interconnect is call a game's \emph{grid} and can
+represent the layout of roads and rooms of a city, a set of tunnels and
+caverns, a space station, or whatever.
+
+There are a few initial, suggested commands to use before proceeding:
+
+\footnotesize{\texttt{
+\begin{verse}
+@set me=ANSI\\
+@lock me=me\\
+@lock/use me=me\\
+@lock/enter me=me\\
+@sex me=male\\
+@desc me=\%r[space(5)]You see ...
+\end{verse}
+}}
+
+The name, me, is a reference to yourself.
+The ANSI flag enables color to be sent to your client.
+The locks (in this case, default, use, and enter, respectively) prevent
+other players from picking you up or going inside you.
+You can use a softcode function by surrounding it in square brackets; space()
+returns the requested number of spaces which causes your description to
+indent by five space.
+See `help @lock', `help substitutions', `help space', and `help look' for more
+information.
+With these changes in place, the appearance of the room and your appearance have
+changed:
+
+\footnotesize{\texttt{
+\begin{verse}
+look\\
+look me
+\end{verse}
+}}
+
+\chapter{Hosting First Steps}
+\section{How to Begin Running TinyMUX}
+The first thing you'll need is some server hardware with some flavor of Unix or
+Windows running. It's more than a little helpful if this server has a dedicated
+Internet or Intranet connection, as without it, you'll be using it by yourself.
+
+You need to find the latest known-good distribution from
+www.tinymux.org and download it. If you are using a web browser, it will
+download it in `binary' mode for you automatically, however, if you use an FTP
+client manually, you'll need to be sure to change the transfer to binary mode.
+Even between Unix machines, non-binary transfers can be problematic.
+
+Here is a typical manual FTP conversation:
+\footnotesize{\texttt{
+\begin{verse}
+\$ \emph{ftp ftp.tinymux.org}\\
+Connected to ftp.tinymux.org.\\
+220 ProFTPD 1.2.9 Server (DinahFTP) [dinah.mushpark.com]\\
+User (ftp.tinymux.org:(none)): \emph{anonymous}\\
+331 Anonymous login ok, send your complete email address as your password.\\
+Password: \emph{sdennis@svdltd.com}\\
+230 Anonymous access granted, restrictions apply.\\
+ftp$>$ \emph{cd TinyMUX/tinymux-2.6}\\
+250 CWD command successful.\\
+ftp$>$ \emph{binary}\\
+200 Type set to I.\\
+ftp$>$ \emph{ls}\\
+200 PORT command successful\\
+150 Opening ASCII mode data connection for file list\\
+22\\
+23\\
+26\\
+24\\
+25\\
+27\\
+226 Transfer complete.\\
+ftp: 24 bytes received in 0.00Seconds 24000.00Kbytes/sec.\\
+ftp$>$ \emph{cd 27}\\
+250 CWD command successful.\\
+ftp$>$ \emph{ls}\\
+200 PORT command successful\\
+150 Opening ASCII mode data connection for file list\\
+mux-2.6.5.26-2.6.5.27.unix.patch.gz\\
+mux-2.6.5.26-2.6.5.27.unix.patch.gz.sig\\
+mux-2.6.5.26-2.6.5.27.win32.bin.utp\\
+mux-2.6.5.26-2.6.5.27.win32.bin.utp.sig\\
+mux-2.6.5.26-2.6.5.27.win32.src.utp\\
+mux-2.6.5.26-2.6.5.27.win32.src.utp.sig\\
+mux-2.6.5.27.unix.tar.bz2\\
+mux-2.6.5.27.unix.tar.bz2.sig\\
+mux-2.6.5.27.unix.tar.gz\\
+mux-2.6.5.27.unix.tar.gz.sig\\
+mux-2.6.5.27.win32.bin.j\\
+mux-2.6.5.27.win32.bin.j.sig\\
+mux-2.6.5.27.win32.bin.tar.gz\\
+mux-2.6.5.27.win32.bin.tar.gz.sig\\
+mux-2.6.5.27.win32.bin.zip\\
+mux-2.6.5.27.win32.bin.zip.sig\\
+mux-2.6.5.27.win32.src.j\\
+mux-2.6.5.27.win32.src.j.sig\\
+mux-2.6.5.27.win32.src.tar.gz\\
+mux-2.6.5.27.win32.src.tar.gz.sig\\
+mux-2.6.5.27.win32.src.zip\\
+mux-2.6.5.27.win32.src.zip.sig\\
+226 Transfer complete.\\
+ftp: 712 bytes received in 0.02Seconds 44.50Kbytes/sec.\\
+ftp$>$ \emph{get mux-2.6.5.27.unix.tar.gz}\\
+200 PORT command successful\\
+150 Opening BINARY mode data connection for mux-2.6.5.27.unix.tar.gz (981835 bytes)\\
+226 Transfer complete.\\
+ftp: 981835 bytes received in 5.69Seconds 172.62Kbytes/sec.\\
+ftp$>$ \emph{quit}\\
+221 Goodbye.\\
+\$
+\end{verse}
+}}
+The suffixes on the end of the filename tell you which tools were used to
+produce the file and in which order. Gzip handles `.gz' files, and tar handled
+`.tar' files. So in order to unpack this distribution, we do the following:
+\footnotesize{\texttt{
+\begin{verse}
+\$ \emph{gzip -d mux-2.6.5.27.unix.tar.gz}\\
+\$ \emph{tar xvf mux-2.6.5.27.unix.tar}
+\end{verse}
+}}
+These two commands will create a sub-directory called `mux2.6' with all the
+required files in the right places. So, in order to build the game, continue
+as follows:
+\footnotesize{\texttt{
+\begin{verse}
+\$ \emph{cd mux2.6/src}\\
+\$ \emph{./configure}\\
+\$ \emph{make depend}
+\$ \emph{make}
+\end{verse}
+}}
+On some system `gmake' is required instead of `make'. At the end of this
+process, you should have executable programs built in the mux2.6/src directory
+with links made to the mux2.6/game/bin directory. A link in Unix parlance is
+another name for the same file contents.
+
+At this point, if you don't have an existing database to convert or import,
+and if you don't have any configuration changes, you could simply run the
+server and it would create a minimal database and let you connect to port
+2860. This can be done as follows:
+\footnotesize{\texttt{
+\begin{verse}
+\$ \emph{cd ../game}\\
+\$ \emph{./Startmux}
+\end{verse}
+}}
+The Startmux script will do a few things like index the help files and then
+return to the \$-prompt again. You can verify that the server is running as
+follows:
+\footnotesize{\texttt{
+\begin{verse}
+\$ \emph{ps u}
+\end{verse}
+}}
+You will see two processes, a netmux game process and a slave process that
+handled reverse DNS lookups and the identd protocol for hosts that support
+it. To connect to the game, do the following:
+\footnotesize{\texttt{
+\begin{verse}
+\$ \emph{telnet localhost 2860}
+\end{verse}
+}}
+You will see the connect.txt welcome screen contents and then the server will
+wait for you to connect or logon. With a minimal database, there is only one
+player defined: Wizard or \#1. And, there is only one room defined: Limbo or
+\#0. The initial password for \#1 is something of a standard everywhere. You
+should change it right away with the `@password' command. Do the following:
+\footnotesize{\texttt{
+\begin{verse}
+Connect Wizard potrzebie\\
+@password potrzebie=XXXXXXXX
+\end{verse}
+}}
+where XXXXXX is a password of your own chosing.
+
+Use `help @password' to learn more about the @password command, and
+`help topic' if you need help on a command, function, or class of
+functions.
+
+Finally, at some point, you'll want to bring the game down in an orderly way.
+People have stepped over the power cord and other non-orderly ways of bringing
+the game down, but `@shutdown' is recommended instead as follows:
+\footnotesize{\texttt{
+\begin{verse}
+\emph{@shutdown}\\
+Goodbye.\\
+Connection Lost.\\
+\$
+\end{verse}
+}}
+The database is quite rugged, but there are no guarantees if you make a
+habit of abusing it.
+
+Finally, buy a UPS. Backup, off-line. Do it. If you use Window NT, configure
+it, and then leave the server alone. WinNT works best if you give it good
+hardware, good drivers, a set of services to run, and then leave it alone
+to serve.
+\chapter{Configuration}
+\section{Basic Configuration}
+The game server reads from a configuration file when the game server starts or
+restarts, but changing a configuration file while the game is running does not
+change a running game's behavior. To accomplish that, look at the `@admin' or
+`@restart' commands.
+
+The name of the configuration file is given in the ./Startmux script on the
+command line and it's netmux.conf for Unix installations and tinymux.conf for
+Win32 installations.
+
+If you look at this file, you'll see several lines with `include' in them.
+Including a sub-configuration file is the same as if the contents were
+present in the top-level configuration file.
+
+Everything in a configuration file is handled as if \#1 (Wizard) did it.
+\section{Site-Banning}
+\subsection{Overview}
+The following configuration options are used to restrict a player's access
+based on their IP address:
+\begin{itemize}
+\item
+\texttt{register\_site} allows existing players to connect to their
+characters, but does not allow players from the specified subnet to create
+new characters.
+\item
+\texttt{forbid\_site} disallows any connection and doesn't even show the
+welcome screen.
+\item
+\texttt{allow\_guest\_from\_registered\_site $<$yes$|$no$>$.}  Default is
+\texttt{yes}. This configuration option allows the \texttt{register\_site}
+subnet list to control the ability of guests to connect from those sites as
+well.
+\item A future version of MUX will also include the \texttt{guest\_site}
+configuration option. That option allows and requires the administrator to
+manage the guest restrictions separately.
+\end{itemize}
+For register-only games, the administrator typically uses
+\texttt{register\_site} to encompass the entire Internet (0.0.0.0 0.0.0.0).
+In this case, it is more convenient to leave
+\texttt{allow\_guest\_from\_registered\_site} at its default value of
+\texttt{yes}, and then use \texttt{guest\_site} or \texttt{forbid\_site} to
+control problem guests.
+
+For open games that allow characters to be created at the initial welcome
+screen, it is more convenient to turn\\
+\texttt{allow\_guest\_from\_registered\_site} off, and then use
+\texttt{register\_site} exclusively to control problem players and problem
+guests. This allows players from that subnet to connect to existing
+characters, but disallow them from creating new ones or from connecting as
+guest.
+
+So, the usefulness of the \texttt{forbid\_site} configuration option is
+already narrow, and it continues to narrow further.
+
+Also, remember that none of these configuration options are saved between
+\texttt{@shutdown} or \texttt{@restart} and they need to be added to the
+configuration file or appear on \#1's \texttt{STARTUP} attribute. However,
+I would recommend against putting these commands on the \#1's \texttt{STARTUP}
+attribute.
+\subsection{Guessing the SubNet}
+In order for the above restrictions to be useful, you need to guess the
+player's subnet, and realize that a single player may be connecting from
+different subnets and therefore each subnet that they connect from must be
+dealt with separately.
+
+Each shell account that a player uses to connect to the game will be on its
+own subnet. In some ways these are easy to deal with because these servers
+can be expected to have a single static IP addresses, but it's not
+guaranteed.
+
+And large Internet Service Providers (ISPs) like AOL have subnets for each
+service access number. So, if someone calls a particular local phone number
+and logs into AOL, they are assigned an IP dynamically from a large static
+pool. If they are willing to make a long-distance phone call to another
+service access number, they may get an IP from a different large static
+pool.
+
+You must deal with the entire static pool for a particular service access
+number. If they call a different service access number, then that will
+represent a yet another subnet that needs to be handled separately as it will
+probably not be adjacent numerically to their primary one.
+\subsection{Example of Guessing}
+Not that I want anyone to restrict my subnet, but let's take it as an example.
+If I connect to a game, you will usually see 207.153.135.132 as the host name
+if the server is running on Unix, and SDENNIS5 if the server is running on
+Win32\footnote{Unix and NT both do reverse-DNS lookups. However, if no DNS
+PTR entry exists, Windows does at extra step. It will query the client
+machine for a NETBIOS name (which is also known as your computer name, and
+can be found under your network settings). This NETBIOS name is unique
+across an NT domain and across a NETBEUI subnet, but in a TCP/IP context,
+it is not necessarily unique, and it's not possible to map from that NETBIOS
+name back to a numerical IP.}.
+
+You might also see me connect from svdltd.com or mirror.svdltd.com, and so,
+for the sake of this example, you have three IP addresses that are close and
+therefore they are probably within the same subnet. It's a fair guess.
+
+\footnotesize{\texttt{
+\begin{verse}
+$>$ \emph{ping -a svdltd.com}\\
+Pinging svdltd.com [207.153.135.130] with 32 bytes of data.\\
+\ldots\\
+$>$ \emph{ping -a 207.135.135.132}\\
+Pinging SDENNIS5 [207.153.135.132] with 32 bytes of data.\\
+\ldots\\
+$>$ \emph{ping -a 207.135.135.134}\\
+Pinging 207.153.135.134 with 32 bytes of data.\\
+\ldots
+\end{verse}
+}}
+
+And now, we need to convert from decimal, to hexadecimal, to binary as
+follows:
+\begin{verse}
+130 ==> 0x82 ==> 1000.0010 binary.\\
+132 ==> 0x84 ==> 1000.0100 binary.\\
+134 ==> 0x86 ==> 1000.0110 binary.
+\end{verse}
+So, the subnet is at least the lower three binary digits because those three
+digits are the only ones that are changing. Let's try a different fourth bit
+and see if the hostname changes. That is, 1000.1001 binary ==> 137.
+\footnotesize{\texttt{
+\begin{verse}
+$>$ \emph{ping -a 207.153.135.137}\\
+\ldots\\
+request timed out.
+\ldots
+\end{verse}
+}}
+And, for my subnet, it's hard to find another computer nearby. It turns out
+that the lower 4 binary digits are within my subnet, but you couldn't guess
+that unless one of my computers had allocated one of the higher IP addresses
+from the local DHCP service. DHCP tends to assign IP numbers from lower to
+higher, and it also tends to renew the same IP address to the same device.
+
+Since, there wasn't a computer nearby, you might choose the lower four bits
+anyway, but for this example, we'll proceed with the assumption that the
+subnet is defined uniquely by the upper 29 bits and that the lower 3 bits are
+used for devices within the subnet.
+\subsection{What is the Base IP and Mask?}
+
+The Base IP address for the above example is determined by zeroing out lower
+three bits of an IP address out (e.g., 1000.0\underline{000} binary or 128).
+The Base IP address is 207.153.135.128.
+
+The mask is determined by setting all bits `one' except for the lower 3 bits
+which are `zero' (e.g., the last byte of the IP address is
+1111.1\underline{000} binary or 248). The mask for our example subnet is
+255.255.255.248.
+
+Another way of specifying the mask is to use a slash followed by a number
+from 0 to 32 (`/N'). N is the number of `one' bits in the mask, or
+equivalently, how many bits of the base IP address are significant - 29 in
+our example.
+\subsection{MUX commands}
+You can apply the \texttt{register\_site} restriction to the desired subnet
+with either of the following commands, but the second format is the preferred
+format:
+\footnotesize{\texttt{{
+\begin{verse}
+@admin register\_site=207.153.135.128 255.255.255.248\\
+@admin register\_site=207.153.135.128/29
+\end{verse}
+}}
+The 29 at the end represents the number of significant bits in the base subnet
+address.
+
+\backmatter
+\end{document}
