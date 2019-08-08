@@ -22,4 +22,6 @@
 *.tar
 *.zip
 
-mux/game/*
+mux/game/data/*
+mux/game/log/*
+
