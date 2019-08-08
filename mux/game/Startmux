@@ -3,8 +3,11 @@
 #	Startmux - Kick off the netmux process.
 #
 PATH=/usr/ucb:/bin:/usr/bin:.; export PATH
+
+BASEDIR=/home/tinymux/TinyMUX/mux/game
+
 #
-. mux.config
+. $BASEDIR/mux.config
 #
 #	Make sure there isn't already a MUX running.
 #
@@ -79,5 +82,5 @@ export LIBPATH
 SHLIB_PATH=$BIN
 export SHLIB_PATH
 
-(nohup $BIN/netmux -c $GAMENAME.conf -p $PIDFILE -e $LOGDIR >/dev/null 2>&1 &)
+(nohup $BIN/netmux -c $BASEDIR/$GAMENAME.conf -p $BASEDIR/$PIDFILE -e $LOGDIR >/dev/null 2>&1 &)
 
