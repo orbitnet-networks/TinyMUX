@@ -178,7 +178,7 @@ SUBDIRS = modules tools
 .cpp.o:
 	$(CXX) $(ALLCXXFLAGS) -c $<
 
-all: libmux.so netmux slave  links subdirs
+all: libmux.so netmux slave  links subdirs scripts
 
 links: netmux slave 
 	cd ../game/bin ; rm -f dbconvert ; ln -s ../../src/netmux dbconvert
@@ -186,6 +186,9 @@ links: netmux slave
 	cd ../game/bin ; rm -f slave ; ln -s ../../src/slave slave
 	( if [ ! -z "" -a -f "" ]; then cd ../game/bin ; rm -f ; ln -s ../../src/  ; fi )
 	( if [ ! -z "libmux.so" -a -f "libmux.so" ]; then cd ../game/bin ; rm -f libmux.so; ln -s ../../src/libmux.so libmux.so ; fi )
+
+scripts: netmux slave 
+	cd ../game ; rm -f Startmush ; cp ../src/Startmux Startmux
 
 stubslave: stubslave.o
 	$(CXX) $(ALLCXXFLAGS) -o stubslave stubslave.o -L. $(LIBS) $(MUX_LIBS) $(STUBLIBS)
