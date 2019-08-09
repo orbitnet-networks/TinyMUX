@@ -6,7 +6,7 @@
 #
 PATH=/usr/ucb:/bin:/usr/bin:.; export PATH
 
-BASEDIR=/home/tinymux/TinyMUX/mux/game
+BASEDIR=/home/tinymux/TinyMUX/mux/game/
 
 #
 . $BASEDIR/mux.config
