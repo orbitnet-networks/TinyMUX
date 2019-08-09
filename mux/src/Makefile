@@ -12,6 +12,8 @@ CC = gcc
 CXX = g++ -std=c++11
 CXXCPP = g++ -E -std=c++11
 LIBS = -lm -lcrypt  
+SCRIPT_DIR = scripts
+basedir = ${prefix}
 
 .SUFFIXES: .cpp
 
@@ -172,13 +174,17 @@ ALLSRC     = $(NETMUX_BASE_SRC) $(LIBMUX_BASE_SRC) $(REALITY_SRC) $(VER_SRC) $(A
 NETMUX_SRC = $(NETMUX_BASE_SRC) $(REALITY_SRC)
 NETMUX_OBJ = $(NETMUX_BASE_OBJ) $(REALITY_OBJ)
 
+do_subst = sed \
+        -e 's|[@]basedir@|$(basedir)|g' \
+
+
 SUBDIRS = modules tools
 .PHONY: subdirs $(SUBDIRS)
 
 .cpp.o:
 	$(CXX) $(ALLCXXFLAGS) -c $<
 
-all: libmux.so netmux slave  links subdirs scripts
+all: libmux.so netmux slave Startmux  links subdirs
 
 links: netmux slave 
 	cd ../game/bin ; rm -f dbconvert ; ln -s ../../src/netmux dbconvert
@@ -187,14 +193,16 @@ links: netmux slave
 	( if [ ! -z "" -a -f "" ]; then cd ../game/bin ; rm -f ; ln -s ../../src/  ; fi )
 	( if [ ! -z "libmux.so" -a -f "libmux.so" ]; then cd ../game/bin ; rm -f libmux.so; ln -s ../../src/libmux.so libmux.so ; fi )
 
-scripts: netmux slave 
-	cd ../game ; rm -f Startmush ; cp ../src/Startmux Startmux
-
 stubslave: stubslave.o
 	$(CXX) $(ALLCXXFLAGS) -o stubslave stubslave.o -L. $(LIBS) $(MUX_LIBS) $(STUBLIBS)
 
 slave: slave.o
 	$(CXX) $(ALLCXXFLAGS) -o slave slave.o $(LIBS)
+
+Startmux: $(SCRIPT_DIR)/Startmux.in
+	$(do_subst) <$(SCRIPT_DIR)/Startmux.in >$(SCRIPT_DIR)/Startmux
+	chmod +x $(SCRIPT_DIR)/Startmux
+	cp ${SCRIPT_DIR}/Startmux ../game/Startmux
 
 unsplit: unsplit.o
 	$(CXX) $(ALLCXXFLAGS) -o unsplit unsplit.o
@@ -220,9 +228,9 @@ depend: $(ALLSRC) unsplit
 	mv .depend~ .depend
 
 realclean:
-	-rm -f *.o a.out core gmon.out dbconvert config.status config.log netmux netmux~ libmux.so libmux.so~ slave  autoconf.h Makefile
+	-rm -f *.o a.out core gmon.out dbconvert config.status config.log netmux netmux~ libmux.so libmux.so~ slave  autoconf.h Makefile $(SCRIPT_DIR)/Startmush
 
 clean:
-	-rm -f *.o a.out core gmon.out warn.log config.status config.log netmux~ libmux.so~
+	-rm -f *.o a.out core gmon.out warn.log config.status config.log netmux~ libmux.so~ $(SCRIPT_DIR)/Startmush
 
 include .depend

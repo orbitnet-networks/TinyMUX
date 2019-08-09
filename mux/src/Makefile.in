@@ -12,6 +12,8 @@ CC = @CC@
 CXX = @CXX@
 CXXCPP = @CXXCPP@
 LIBS = @LIBS@ @FIRANLIBS@
+SCRIPT_DIR = scripts
+basedir = @basedir@
 
 .SUFFIXES: .cpp
 
@@ -172,13 +174,17 @@ ALLSRC     = $(NETMUX_BASE_SRC) $(LIBMUX_BASE_SRC) $(REALITY_SRC) $(VER_SRC) $(A
 NETMUX_SRC = $(NETMUX_BASE_SRC) $(REALITY_SRC)
 NETMUX_OBJ = $(NETMUX_BASE_OBJ) $(REALITY_OBJ)
 
+do_subst = sed \
+        -e 's|[@]basedir@|$(basedir)|g' \
+
+
 SUBDIRS = modules tools
 .PHONY: subdirs $(SUBDIRS)
 
 .cpp.o:
 	$(CXX) $(ALLCXXFLAGS) -c $<
 
-all: @DYNAMICLIB_TARGET@ netmux slave @STUBSLAVE_TARGET@ links subdirs
+all: @DYNAMICLIB_TARGET@ netmux slave Startmux @STUBSLAVE_TARGET@ links subdirs
 
 links: netmux slave @STUBSLAVE_TARGET@
 	cd ../game/bin ; rm -f dbconvert ; ln -s ../../src/netmux dbconvert
@@ -192,6 +198,11 @@ stubslave: stubslave.o
 
 slave: slave.o
 	$(CXX) $(ALLCXXFLAGS) -o slave slave.o $(LIBS)
+
+Startmux: $(SCRIPT_DIR)/Startmux.in
+	$(do_subst) <$(SCRIPT_DIR)/Startmux.in >$(SCRIPT_DIR)/Startmux
+	chmod +x $(SCRIPT_DIR)/Startmux
+	cp ${SCRIPT_DIR}/Startmux ../game/Startmux
 
 unsplit: unsplit.o
 	$(CXX) $(ALLCXXFLAGS) -o unsplit unsplit.o
@@ -217,9 +228,9 @@ depend: $(ALLSRC) unsplit
 	mv .depend~ .depend
 
 realclean:
-	-rm -f *.o a.out core gmon.out dbconvert config.status config.log netmux netmux~ @DYNAMICLIB_TARGET@ @DYNAMICLIB_TARGET@~ slave @STUBSLAVE_TARGET@ autoconf.h Makefile
+	-rm -f *.o a.out core gmon.out dbconvert config.status config.log netmux netmux~ @DYNAMICLIB_TARGET@ @DYNAMICLIB_TARGET@~ slave @STUBSLAVE_TARGET@ autoconf.h Makefile $(SCRIPT_DIR)/Startmush
 
 clean:
-	-rm -f *.o a.out core gmon.out warn.log config.status config.log netmux~ @DYNAMICLIB_TARGET@~
+	-rm -f *.o a.out core gmon.out warn.log config.status config.log netmux~ @DYNAMICLIB_TARGET@~ $(SCRIPT_DIR)/Startmush
 
 include .depend

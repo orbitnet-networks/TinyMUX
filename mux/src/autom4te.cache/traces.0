@@ -1,0 +1,303 @@
+m4trace:configure.ac:4: -1- m4_pattern_forbid([^_?A[CHUM]_])
+m4trace:configure.ac:4: -1- m4_pattern_forbid([_AC_])
+m4trace:configure.ac:4: -1- m4_pattern_forbid([^LIBOBJS$], [do not use LIBOBJS directly, use AC_LIBOBJ (see section `AC_LIBOBJ vs LIBOBJS'])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^AS_FLAGS$])
+m4trace:configure.ac:4: -1- m4_pattern_forbid([^_?m4_])
+m4trace:configure.ac:4: -1- m4_pattern_forbid([^dnl$])
+m4trace:configure.ac:4: -1- m4_pattern_forbid([^_?AS_])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^SHELL$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^PATH_SEPARATOR$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^PACKAGE_NAME$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^PACKAGE_TARNAME$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^PACKAGE_VERSION$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^PACKAGE_STRING$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^PACKAGE_BUGREPORT$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^PACKAGE_URL$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^exec_prefix$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^prefix$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^program_transform_name$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^bindir$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^sbindir$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^libexecdir$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^datarootdir$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^datadir$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^sysconfdir$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^sharedstatedir$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^localstatedir$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^runstatedir$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^includedir$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^oldincludedir$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^docdir$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^infodir$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^htmldir$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^dvidir$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^pdfdir$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^psdir$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^libdir$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^localedir$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^mandir$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^PACKAGE_NAME$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^PACKAGE_TARNAME$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^PACKAGE_VERSION$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^PACKAGE_STRING$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^PACKAGE_BUGREPORT$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^PACKAGE_URL$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^DEFS$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^ECHO_C$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^ECHO_N$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^ECHO_T$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^LIBS$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^build_alias$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^host_alias$])
+m4trace:configure.ac:4: -1- m4_pattern_allow([^target_alias$])
+m4trace:configure.ac:26: -1- m4_pattern_allow([^REALITY_LVLS$])
+m4trace:configure.ac:27: -1- m4_pattern_allow([^LIBS$])
+m4trace:configure.ac:28: -1- m4_pattern_allow([^REALITY_SRC$])
+m4trace:configure.ac:29: -1- m4_pattern_allow([^REALITY_OBJ$])
+m4trace:configure.ac:46: -1- m4_pattern_allow([^WOD_REALMS$])
+m4trace:configure.ac:63: -1- m4_pattern_allow([^MEMORY_BASED$])
+m4trace:configure.ac:81: -1- m4_pattern_allow([^STUB_SLAVE$])
+m4trace:configure.ac:82: -1- m4_pattern_allow([^STUBSLAVE_TARGET$])
+m4trace:configure.ac:100: -1- m4_pattern_allow([^FIRANMUX$])
+m4trace:configure.ac:101: -1- m4_pattern_allow([^FIRANLIBS$])
+m4trace:configure.ac:118: -1- m4_pattern_allow([^INLINESQL$])
+m4trace:configure.ac:135: -1- m4_pattern_allow([^SELFCHECK$])
+m4trace:configure.ac:158: -1- m4_pattern_allow([^SQL_INCLUDE$])
+m4trace:configure.ac:181: -1- m4_pattern_allow([^SQL_LIBPATH$])
+m4trace:configure.ac:199: -1- m4_pattern_allow([^SSL$])
+m4trace:configure.ac:216: -1- m4_pattern_allow([^DEPRECATED$])
+m4trace:configure.ac:220: -1- m4_pattern_allow([^CXX$])
+m4trace:configure.ac:220: -1- m4_pattern_allow([^CXXFLAGS$])
+m4trace:configure.ac:220: -1- m4_pattern_allow([^LDFLAGS$])
+m4trace:configure.ac:220: -1- m4_pattern_allow([^LIBS$])
+m4trace:configure.ac:220: -1- m4_pattern_allow([^CPPFLAGS$])
+m4trace:configure.ac:220: -1- m4_pattern_allow([^CXX$])
+m4trace:configure.ac:220: -1- m4_pattern_allow([^ac_ct_CXX$])
+m4trace:configure.ac:220: -1- m4_pattern_allow([^EXEEXT$])
+m4trace:configure.ac:220: -1- m4_pattern_allow([^OBJEXT$])
+m4trace:configure.ac:221: -1- m4_pattern_allow([^CXXCPP$])
+m4trace:configure.ac:221: -1- m4_pattern_allow([^CPPFLAGS$])
+m4trace:configure.ac:221: -1- m4_pattern_allow([^CXXCPP$])
+m4trace:configure.ac:222: -1- m4_pattern_allow([^CC$])
+m4trace:configure.ac:222: -1- m4_pattern_allow([^CFLAGS$])
+m4trace:configure.ac:222: -1- m4_pattern_allow([^LDFLAGS$])
+m4trace:configure.ac:222: -1- m4_pattern_allow([^LIBS$])
+m4trace:configure.ac:222: -1- m4_pattern_allow([^CPPFLAGS$])
+m4trace:configure.ac:222: -1- m4_pattern_allow([^CC$])
+m4trace:configure.ac:222: -1- m4_pattern_allow([^CC$])
+m4trace:configure.ac:222: -1- m4_pattern_allow([^CC$])
+m4trace:configure.ac:222: -1- m4_pattern_allow([^CC$])
+m4trace:configure.ac:222: -1- m4_pattern_allow([^ac_ct_CC$])
+m4trace:configure.ac:223: -1- m4_pattern_allow([^CPP$])
+m4trace:configure.ac:223: -1- m4_pattern_allow([^CPPFLAGS$])
+m4trace:configure.ac:223: -1- m4_pattern_allow([^CPP$])
+m4trace:configure.ac:224: -1- m4_pattern_allow([^build$])
+m4trace:configure.ac:224: -1- m4_pattern_allow([^build_cpu$])
+m4trace:configure.ac:224: -1- m4_pattern_allow([^build_vendor$])
+m4trace:configure.ac:224: -1- m4_pattern_allow([^build_os$])
+m4trace:configure.ac:224: -1- m4_pattern_allow([^host$])
+m4trace:configure.ac:224: -1- m4_pattern_allow([^host_cpu$])
+m4trace:configure.ac:224: -1- m4_pattern_allow([^host_vendor$])
+m4trace:configure.ac:224: -1- m4_pattern_allow([^host_os$])
+m4trace:configure.ac:225: -1- m4_pattern_allow([^GREP$])
+m4trace:configure.ac:225: -1- m4_pattern_allow([^EGREP$])
+m4trace:configure.ac:225: -1- m4_pattern_allow([^STDC_HEADERS$])
+m4trace:configure.ac:225: -1- m4_pattern_allow([^_POSIX_SOURCE$])
+m4trace:configure.ac:225: -1- m4_pattern_allow([^_POSIX_1_SOURCE$])
+m4trace:configure.ac:225: -1- m4_pattern_allow([^_MINIX$])
+m4trace:configure.ac:225: -1- m4_pattern_allow([^__EXTENSIONS__$])
+m4trace:configure.ac:225: -1- m4_pattern_allow([^_ALL_SOURCE$])
+m4trace:configure.ac:225: -1- m4_pattern_allow([^_GNU_SOURCE$])
+m4trace:configure.ac:225: -1- m4_pattern_allow([^_POSIX_PTHREAD_SEMANTICS$])
+m4trace:configure.ac:225: -1- m4_pattern_allow([^_TANDEM_SOURCE$])
+m4trace:configure.ac:226: -1- m4_include([m4/ax_cxx_compile_stdcxx.m4])
+m4trace:m4/ax_cxx_compile_stdcxx.m4:48: -1- AC_DEFUN([AX_CXX_COMPILE_STDCXX], [dnl
+  m4_if([$1], [11], [ax_cxx_compile_alternatives="11 0x"],
+        [$1], [14], [ax_cxx_compile_alternatives="14 1y"],
+        [$1], [17], [ax_cxx_compile_alternatives="17 1z"],
+        [m4_fatal([invalid first argument `$1' to AX_CXX_COMPILE_STDCXX])])dnl
+  m4_if([$2], [], [],
+        [$2], [ext], [],
+        [$2], [noext], [],
+        [m4_fatal([invalid second argument `$2' to AX_CXX_COMPILE_STDCXX])])dnl
+  m4_if([$3], [], [ax_cxx_compile_cxx$1_required=true],
+        [$3], [mandatory], [ax_cxx_compile_cxx$1_required=true],
+        [$3], [optional], [ax_cxx_compile_cxx$1_required=false],
+        [m4_fatal([invalid third argument `$3' to AX_CXX_COMPILE_STDCXX])])
+  AC_LANG_PUSH([C++])dnl
+  ac_success=no
+
+  m4_if([$2], [noext], [], [dnl
+  if test x$ac_success = xno; then
+    for alternative in ${ax_cxx_compile_alternatives}; do
+      switch="-std=gnu++${alternative}"
+      cachevar=AS_TR_SH([ax_cv_cxx_compile_cxx$1_$switch])
+      AC_CACHE_CHECK(whether $CXX supports C++$1 features with $switch,
+                     $cachevar,
+        [ac_save_CXX="$CXX"
+         CXX="$CXX $switch"
+         AC_COMPILE_IFELSE([AC_LANG_SOURCE([_AX_CXX_COMPILE_STDCXX_testbody_$1])],
+          [eval $cachevar=yes],
+          [eval $cachevar=no])
+         CXX="$ac_save_CXX"])
+      if eval test x\$$cachevar = xyes; then
+        CXX="$CXX $switch"
+        if test -n "$CXXCPP" ; then
+          CXXCPP="$CXXCPP $switch"
+        fi
+        ac_success=yes
+        break
+      fi
+    done
+  fi])
+
+  m4_if([$2], [ext], [], [dnl
+  if test x$ac_success = xno; then
+    dnl HP's aCC needs +std=c++11 according to:
+    dnl http://h21007.www2.hp.com/portal/download/files/unprot/aCxx/PDF_Release_Notes/769149-001.pdf
+    dnl Cray's crayCC needs "-h std=c++11"
+    for alternative in ${ax_cxx_compile_alternatives}; do
+      for switch in -std=c++${alternative} +std=c++${alternative} "-h std=c++${alternative}"; do
+        cachevar=AS_TR_SH([ax_cv_cxx_compile_cxx$1_$switch])
+        AC_CACHE_CHECK(whether $CXX supports C++$1 features with $switch,
+                       $cachevar,
+          [ac_save_CXX="$CXX"
+           CXX="$CXX $switch"
+           AC_COMPILE_IFELSE([AC_LANG_SOURCE([_AX_CXX_COMPILE_STDCXX_testbody_$1])],
+            [eval $cachevar=yes],
+            [eval $cachevar=no])
+           CXX="$ac_save_CXX"])
+        if eval test x\$$cachevar = xyes; then
+          CXX="$CXX $switch"
+          if test -n "$CXXCPP" ; then
+            CXXCPP="$CXXCPP $switch"
+          fi
+          ac_success=yes
+          break
+        fi
+      done
+      if test x$ac_success = xyes; then
+        break
+      fi
+    done
+  fi])
+  AC_LANG_POP([C++])
+  if test x$ax_cxx_compile_cxx$1_required = xtrue; then
+    if test x$ac_success = xno; then
+      AC_MSG_ERROR([*** A compiler with support for C++$1 language features is required.])
+    fi
+  fi
+  if test x$ac_success = xno; then
+    HAVE_CXX$1=0
+    AC_MSG_NOTICE([No compiler with C++$1 support was found])
+  else
+    HAVE_CXX$1=1
+    AC_DEFINE(HAVE_CXX$1,1,
+              [define if the compiler supports basic C++$1 syntax])
+  fi
+  AC_SUBST(HAVE_CXX$1)
+])
+m4trace:configure.ac:227: -1- AX_CXX_COMPILE_STDCXX([11], [noext], [mandatory])
+m4trace:configure.ac:227: -1- m4_pattern_allow([^HAVE_CXX11$])
+m4trace:configure.ac:227: -1- m4_pattern_allow([^HAVE_CXX11$])
+m4trace:configure.ac:237: -1- m4_pattern_allow([^HAVE_LIBSSL$])
+m4trace:configure.ac:238: -1- m4_pattern_allow([^HAVE_LIBCRYPTO$])
+m4trace:configure.ac:244: -1- m4_pattern_allow([^HAVE_LIBMYSQLCLIENT$])
+m4trace:configure.ac:247: -1- m4_pattern_allow([^HAVE_MYSQL$])
+m4trace:configure.ac:259: -1- m4_pattern_allow([^HAVE_DLOPEN$])
+m4trace:configure.ac:285: -1- m4_pattern_allow([^DYNAMICLIB_EXT$])
+m4trace:configure.ac:286: -1- m4_pattern_allow([^DYNAMICLIB_CXXFLAGS$])
+m4trace:configure.ac:287: -1- m4_pattern_allow([^DYNAMICLIB_TARGET$])
+m4trace:configure.ac:288: -1- m4_pattern_allow([^MUX_LIBS$])
+m4trace:configure.ac:289: -1- m4_pattern_allow([^SQL_LIBS$])
+m4trace:configure.ac:290: -1- m4_pattern_allow([^DL_LIB$])
+m4trace:configure.ac:295: -1- m4_pattern_allow([^STDC_HEADERS$])
+m4trace:configure.ac:296: -1- m4_pattern_allow([^TIME_WITH_SYS_TIME$])
+m4trace:configure.ac:297: -1- m4_pattern_allow([^HAVE_SYS_WAIT_H$])
+m4trace:configure.ac:304: -1- m4_pattern_allow([^NEED_SYS_ERRLIST_DCL$])
+m4trace:configure.ac:306: -3- m4_pattern_allow([^NEED_SYS_ERRLIST_DCL$])
+m4trace:configure.ac:309: -2- m4_pattern_allow([^NEED_GETPAGESIZE_DCL$])
+m4trace:configure.ac:311: -1- m4_pattern_allow([^IEEEFP_H_USEABLE$])
+m4trace:configure.ac:324: -2- m4_pattern_allow([^HAVE_FESETPREC$])
+m4trace:configure.ac:325: -2- m4_pattern_allow([^HAVE_FEGETPREC$])
+m4trace:configure.ac:329: -2- m4_pattern_allow([^NEED_INDEX_DCL$])
+m4trace:configure.ac:331: -1- m4_pattern_allow([^HAVE_STRUCT_SIGCONTEXT$])
+m4trace:configure.ac:335: -2- m4_pattern_allow([^MALLOC_IN_STDLIB_H$])
+m4trace:configure.ac:337: -1- m4_pattern_allow([^NEED_MALLOC_DCL$])
+m4trace:configure.ac:339: -2- m4_pattern_allow([^NEED_MALLOC_DCL$])
+m4trace:configure.ac:342: -2- m4_pattern_allow([^EXTENDED_STDIO_DCLS$])
+m4trace:configure.ac:344: -2- m4_pattern_allow([^EXTENDED_SOCKET_DCLS$])
+m4trace:configure.ac:348: -2- m4_pattern_allow([^NEED_GETTIMEOFDAY_DCL$])
+m4trace:configure.ac:350: -2- m4_pattern_allow([^NEED_GETTIMEOFDAY_DCL$])
+m4trace:configure.ac:352: -2- m4_pattern_allow([^NEED_GETTIMEOFDAY_DCL$])
+m4trace:configure.ac:356: -1- m4_pattern_allow([^HAVE_MYSQL_H$])
+m4trace:configure.ac:361: -1- m4_pattern_allow([^off_t$])
+m4trace:configure.ac:362: -1- m4_pattern_allow([^pid_t$])
+m4trace:configure.ac:363: -1- m4_pattern_allow([^size_t$])
+m4trace:configure.ac:364: -1- m4_pattern_allow([^TM_IN_SYS_TIME$])
+m4trace:configure.ac:365: -1- m4_pattern_allow([^HAVE_STRUCT_TM_TM_ZONE$])
+m4trace:configure.ac:365: -1- m4_pattern_allow([^HAVE_TM_ZONE$])
+m4trace:configure.ac:365: -1- m4_pattern_allow([^HAVE_DECL_TZNAME$])
+m4trace:configure.ac:365: -1- m4_pattern_allow([^HAVE_TZNAME$])
+m4trace:configure.ac:366: -1- m4_pattern_allow([^const$])
+m4trace:configure.ac:368: -1- m4_pattern_allow([^SIZEOF_SHORT$])
+m4trace:configure.ac:369: -1- m4_pattern_allow([^SIZEOF_UNSIGNED_SHORT$])
+m4trace:configure.ac:370: -1- m4_pattern_allow([^SIZEOF_INT$])
+m4trace:configure.ac:371: -1- m4_pattern_allow([^SIZEOF_UNSIGNED_INT$])
+m4trace:configure.ac:372: -1- m4_pattern_allow([^SIZEOF_LONG$])
+m4trace:configure.ac:373: -1- m4_pattern_allow([^SIZEOF_UNSIGNED_LONG$])
+m4trace:configure.ac:374: -1- m4_pattern_allow([^SIZEOF_LONG_LONG$])
+m4trace:configure.ac:375: -1- m4_pattern_allow([^SIZEOF_UNSIGNED_LONG_LONG$])
+m4trace:configure.ac:376: -1- m4_pattern_allow([^SIZEOF_VOID_P$])
+m4trace:configure.ac:378: -2- m4_pattern_allow([^SOCKLEN_T_DCL$])
+m4trace:configure.ac:379: -1- m4_pattern_allow([^HAVE_DECL_SYS_SIGLIST$])
+m4trace:configure.ac:386: -2- m4_pattern_allow([^HAVE_SYS_SIGNAME$])
+m4trace:configure.ac:388: -2- m4_pattern_allow([^NEED_GETRUSAGE_DCL$])
+m4trace:configure.ac:390: -2- m4_pattern_allow([^NEED_GETRLIMIT_DCL$])
+m4trace:configure.ac:391: -2- m4_pattern_allow([^WORDS_BIGENDIAN$])
+m4trace:configure.ac:391: -2- m4_pattern_allow([^WORDS_LITTLEENDIAN$])
+m4trace:configure.ac:391: -2- m4_pattern_allow([^WORDS_UNKNOWN$])
+m4trace:configure.ac:391: -1- m4_pattern_allow([^AC_APPLE_UNIVERSAL_BUILD$])
+m4trace:configure.ac:393: -1- m4_pattern_allow([^HAVE_IN_ADDR_T$])
+m4trace:configure.ac:403: -1- m4_pattern_allow([^HAVE_IN_ADDR$])
+m4trace:configure.ac:413: -1- m4_pattern_allow([^HAVE_SOCKADDR_IN$])
+m4trace:configure.ac:423: -1- m4_pattern_allow([^HAVE_IN6_ADDR$])
+m4trace:configure.ac:433: -1- m4_pattern_allow([^HAVE_SOCKADDR_IN6$])
+m4trace:configure.ac:443: -1- m4_pattern_allow([^HAVE_SOCKADDR_STORAGE$])
+m4trace:configure.ac:455: -1- m4_pattern_allow([^HAVE_VPRINTF$])
+m4trace:configure.ac:455: -1- m4_pattern_allow([^HAVE_DOPRNT$])
+m4trace:configure.ac:456: -1- m4_pattern_allow([^HAVE_VFORK_H$])
+m4trace:configure.ac:456: -1- m4_pattern_allow([^HAVE_WORKING_VFORK$])
+m4trace:configure.ac:456: -1- m4_pattern_allow([^vfork$])
+m4trace:configure.ac:456: -1- m4_pattern_allow([^HAVE_WORKING_FORK$])
+m4trace:configure.ac:461: -1- _m4_warn([cross], [AC_RUN_IFELSE called without default to allow cross compiling], [../../lib/autoconf/general.m4:2759: AC_RUN_IFELSE is expanded from...
+configure.ac:461: the top level])
+m4trace:configure.ac:468: -1- m4_pattern_allow([^HAVE_PREAD$])
+m4trace:configure.ac:469: -1- m4_pattern_allow([^HAVE_PWRITE$])
+m4trace:configure.ac:475: -1- m4_pattern_allow([^SIGNAL_SIGCHLD_BRAINDAMAGE$])
+m4trace:configure.ac:475: -1- m4_pattern_allow([^SIGNAL_SIGCHLD_BRAINDAMAGE$])
+m4trace:configure.ac:510: -1- m4_pattern_allow([^NO_IEEE_FP_FORMAT$])
+m4trace:configure.ac:510: -1- m4_pattern_allow([^HAVE_IEEE_FP_FORMAT$])
+m4trace:configure.ac:510: -1- m4_pattern_allow([^NO_IEEE_FP_FORMAT$])
+m4trace:configure.ac:529: -1- m4_pattern_allow([^NO_IEEE_FP_SNAN$])
+m4trace:configure.ac:529: -1- m4_pattern_allow([^HAVE_IEEE_FP_SNAN$])
+m4trace:configure.ac:529: -1- m4_pattern_allow([^NO_IEEE_FP_SNAN$])
+m4trace:configure.ac:552: -1- m4_pattern_allow([^LARGEST_INT_LTE_NEG_QUOTIENT$])
+m4trace:configure.ac:552: -1- m4_pattern_allow([^SMALLEST_INT_GTE_NEG_QUOTIENT$])
+m4trace:configure.ac:552: -1- m4_pattern_allow([^LARGEST_INT_LTE_NEG_QUOTIENT$])
+m4trace:configure.ac:567: -1- _m4_warn([cross], [AC_RUN_IFELSE called without default to allow cross compiling], [../../lib/autoconf/general.m4:2759: AC_RUN_IFELSE is expanded from...
+configure.ac:567: the top level])
+m4trace:configure.ac:567: -1- m4_pattern_allow([^CAN_UNALIGN_SHORT$])
+m4trace:configure.ac:577: -1- _m4_warn([cross], [AC_RUN_IFELSE called without default to allow cross compiling], [../../lib/autoconf/general.m4:2759: AC_RUN_IFELSE is expanded from...
+configure.ac:577: the top level])
+m4trace:configure.ac:577: -1- m4_pattern_allow([^CAN_UNALIGN_INT$])
+m4trace:configure.ac:587: -1- _m4_warn([cross], [AC_RUN_IFELSE called without default to allow cross compiling], [../../lib/autoconf/general.m4:2759: AC_RUN_IFELSE is expanded from...
+configure.ac:587: the top level])
+m4trace:configure.ac:587: -1- m4_pattern_allow([^CAN_UNALIGN_LONG$])
+m4trace:configure.ac:597: -1- _m4_warn([cross], [AC_RUN_IFELSE called without default to allow cross compiling], [../../lib/autoconf/general.m4:2759: AC_RUN_IFELSE is expanded from...
+configure.ac:597: the top level])
+m4trace:configure.ac:597: -1- m4_pattern_allow([^CAN_UNALIGN_LONGLONG$])
+m4trace:configure.ac:607: -1- m4_pattern_allow([^HAVE_LINGER$])
+m4trace:configure.ac:611: -1- m4_pattern_allow([^HAVE_DEV_URANDOM$])
+m4trace:configure.ac:615: -1- m4_pattern_allow([^LIB@&t@OBJS$])
+m4trace:configure.ac:615: -1- m4_pattern_allow([^LTLIBOBJS$])

@@ -676,6 +676,8 @@ ECHO_T
 ECHO_N
 ECHO_C
 DEFS
+script_dir
+basedir
 mandir
 localedir
 libdir
@@ -785,6 +787,7 @@ psdir='${docdir}'
 libdir='${exec_prefix}/lib'
 localedir='${datarootdir}/locale'
 mandir='${datarootdir}/man'
+basedir='${prefix}'
 
 ac_prev=
 ac_dashdash=
