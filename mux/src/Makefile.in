@@ -13,7 +13,7 @@ CXX = @CXX@
 CXXCPP = @CXXCPP@
 LIBS = @LIBS@ @FIRANLIBS@
 SCRIPT_DIR = scripts
-basedir = @basedir@
+basedir = /home/tinymux/TinyMUX/mux/game/
 
 .SUFFIXES: .cpp
 

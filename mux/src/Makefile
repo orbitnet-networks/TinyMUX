@@ -13,7 +13,7 @@ CXX = g++ -std=c++11
 CXXCPP = g++ -E -std=c++11
 LIBS = -lm -lcrypt  
 SCRIPT_DIR = scripts
-basedir = ${prefix}
+basedir = /home/tinymux/TinyMUX/mux/game/
 
 .SUFFIXES: .cpp
 

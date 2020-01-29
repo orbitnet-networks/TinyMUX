@@ -1,5 +1,37 @@
 +V4
 *** Begin CHANNELS ***
-0
+2
+3 3
+g Guests
+pub Public
+scan Scan
+4 3
+g Guests
+pub Public
+scan Scan
 *** Begin COMSYS ***
-0
+3
+Guests
+[Guests]
+639 0 0 0 3 0 2 50
+2
+3 1 1
+t:
+4 1 1
+t:
+Scan
+[Scan]
+110 0 0 0 3 0 114 51
+2
+3 1 1
+t:
+4 1 1
+t:
+Public
+[Public]
+639 0 0 0 3 0 25 49
+2
+3 1 1
+t:
+4 1 1
+t:
